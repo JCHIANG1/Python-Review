@@ -1,5 +1,5 @@
 # Hello...
-*  I'm new to programming and passionate in it:) 
+#H1 I'm new to programming and passionate in it:) 
 *  Coding is fun, it's like learning a new language and solving puzzles!
 *  To improve my technical skills I plan to combine what I learned in class and create small projects here.
 
