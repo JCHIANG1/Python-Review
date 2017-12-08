@@ -59,7 +59,7 @@ class ATM():
         return self.savingAccounts[PinNum].accountBalance
 
 user = ATM()
-user.loadAccounts("trytry.txt")
+user.loadAccounts("account info.txt")
 
 n = 1
 while n<=3:
