@@ -1,0 +1,14 @@
+--what is a class?
+1) the concept of class can apply to other programming language not just for python
+2) Properties and Methods form a class entity, for example under HUMAN class the properties may be name, gender and occupation,
+and the Methods may be speak and talk
+
+--what is an object?
+object is the specific instance of class, for example the object of the HUMAN class may be Tom or Mary
+
+class Human:
+    #the properties
+    def __init__(self,n,o):
+        self.name=n
+        self.occupation=o
+    
