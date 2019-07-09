@@ -7,8 +7,24 @@ and the Methods may be speak and talk
 object is the specific instance of class, for example the object of the HUMAN class may be Tom or Mary
 
 class Human:
-    #the properties
+    
+    #define 1 method that has 2 properties
     def __init__(self,n,o):
         self.name=n
         self.occupation=o
+     
+    #define 2 methods
+    def do_work(self):
+        if self.occupation == "tennis player":
+            print(self.name,"plays tennis")
+        elif self.occupation == "actor":
+            print(self.name,"shoots film")
+      
+    def speaks(self):
+        print(self.name,"says how are you?")
     
+ #create an instance
+ tom = Human("tom cruise","actor") #by doing Human() we initializing the first init method
+ tom.do_work()
+ tom.speaks()
+ 
