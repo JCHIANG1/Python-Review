@@ -1,0 +1,149 @@
+--what is a class?
+1) the concept of class can apply to other programming language not just for python
+2) Properties and Methods form a class entity, for example under HUMAN class the properties may be name, gender and occupation,
+and the Methods may be speak and talk
+
+--what is an object?
+object is the specific instance of class, for example the object of the HUMAN class may be Tom or Mary
+
+class Human:
+    
+    #define 1 method that has 2 properties
+    def __init__(self,n,o):
+        self.name=n
+        self.occupation=o
+     
+    #define 2 methods
+    def do_work(self):
+        if self.occupation == "tennis player":
+            print(self.name,"plays tennis")
+        elif self.occupation == "actor":
+            print(self.name,"shoots film")
+      
+    def speaks(self):
+        print(self.name,"says how are you?")
+    
+ #create an instance
+ tom = Human("tom cruise","actor") #by doing Human() we initializing the first init method
+ tom.do_work()
+ tom.speaks()
+ 
+
+--what is inheritance?
+the object of the subclasses (derived classes) can call the method and property from the parent class
+For example, car class and motor cycle class are classes that inherit from vehicle class or we can say that car class and motor cycle class
+are subclasses of vehicle class because they share same property and method with vehicle class.
+
+--benefit
+1) code reuse: reuse the code from parent class but at the same time you can customize your own class
+2) extensibility
+3) readability
+
+class Vehicle:
+    def general_usage(self):
+        print("general use: transportation")
+        
+class Car(Vehicle): #here the syntex means the car class is derived from vehicle class
+    def __init__(self):
+        print("I'm car")
+        self.wheels=4
+        self.has_roof=True
+    
+    def specific_usage(self):
+        print("specific use: commute to work, vacation with family")
+     
+class MotorCycle(Vehicle):
+    def __init__(self):
+        print("I'm motor cycle")
+        self.wheel=2
+        self.roof=False
+        
+    def specific_usuage(self):
+        self.general_usuage()
+        print("specific use: road trip, racing")
+        
+#create car and motor cycle object
+c = Car()  
+#I'm car
+
+c.specific_usage() 
+#specific use: commute to work, vacation with family
+
+#we can use the method from parent class
+c.general_usage()  
+#general use: transportation
+
+m=MotoCycle()
+#I'm motor cycle
+
+m.specific_usage() 
+#general use: transportation
+#specific use: road trip, racing
+
+
+#isinstance vs. issubclass methods
+
+#whether c is the car instance?
+print(isinstance(c,Car))
+#True
+
+#whether c is subclass of vehicle
+print(issubclass(Car,Vehicle))
+#True
+
+
+#Mutiple Inherience
+class Father():
+    def gardening(self):
+        print("I enjoy gardening")
+
+class Mother():
+    def cooking(self):
+        print("I love cooking")
+
+#a class inherit from two classes
+class Child(Father,Mother):
+    def sports(self):
+        print("I enjoy sprots")
+        
+c=Child()
+c.gardening()
+#I enjoy gardening
+
+c.cooking()
+#I love cooking
+
+c.sports()
+#I enjoy sprots
+
+#a class inherit from two classes
+class Father():
+    def skills(self):
+        print("gardening,programming")
+
+class Mother():
+    def skills(self):
+        print("cooking,art")
+
+#a class inherit from two classes
+class Child(Father,Mother):
+    def skills(self):
+        print("sprots")
+        
+c=Child()
+c.skills()
+#sports
+
+
+#a class inherit from two classes
+class Child2(Father,Mother):
+    def skills(self):
+        Father.skills(self)
+        Mother.skills(self)
+        print("sprots")
+
+c=Child2()
+c.skills()
+#gardening,programming
+#cooking,art
+#sports
