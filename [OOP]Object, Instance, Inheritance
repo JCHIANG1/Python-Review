@@ -6,10 +6,14 @@ and the Methods may be speak and talk
 --what is an object?
 object is the specific instance of class, for example the object of the HUMAN class may be Tom or Mary
 
+--what is the method?
+method can only be called by the object
+
 class Human:
     
-    #define 1 method that has 2 properties
+    #define 1 method that has 2 properties (attributes)
     def __init__(self,n,o):
+        #define the attributes
         self.name=n
         self.occupation=o
      
@@ -23,10 +27,14 @@ class Human:
     def speaks(self):
         print(self.name,"says how are you?")
     
- #create an instance
+ #create an instance of class Human
  tom = Human("tom cruise","actor") #by doing Human() we initializing the first init method
  tom.do_work()
  tom.speaks()
+ 
+ #we can access the attributes of the object
+ print(tom.name)
+ print(tom.occupation)
  
 
 --what is inheritance?
@@ -92,58 +100,3 @@ print(issubclass(Car,Vehicle))
 #True
 
 
-#Mutiple Inherience
-class Father():
-    def gardening(self):
-        print("I enjoy gardening")
-
-class Mother():
-    def cooking(self):
-        print("I love cooking")
-
-#a class inherit from two classes
-class Child(Father,Mother):
-    def sports(self):
-        print("I enjoy sprots")
-        
-c=Child()
-c.gardening()
-#I enjoy gardening
-
-c.cooking()
-#I love cooking
-
-c.sports()
-#I enjoy sprots
-
-#a class inherit from two classes
-class Father():
-    def skills(self):
-        print("gardening,programming")
-
-class Mother():
-    def skills(self):
-        print("cooking,art")
-
-#a class inherit from two classes
-class Child(Father,Mother):
-    def skills(self):
-        print("sprots")
-        
-c=Child()
-c.skills()
-#sports
-
-
-#a class inherit from two classes
-class Child2(Father,Mother):
-    def skills(self):
-        Father.skills(self)
-        Mother.skills(self)
-        print("sprots")
-
-c=Child2()
-c.skills()
-#gardening,programming
-#cooking,art
-#sports
