@@ -66,10 +66,11 @@ class dog():
         
     def talk(self):
         print("bark!")
-        
+
+#dog will be the parent class of cat children class
 class cat(dog):
     def__init__(self,name,age,color):
-        #the super() automatically assigned the name and age to the methods for dog class that can be inherit for cat instance
+        #the super() automatically exercute the init method in dog class
         super().__init__(name,age)
         self.color = color
 
@@ -77,10 +78,52 @@ class cat(dog):
         print("Meow!")
 
 tim = cat("tim",5,"blue")
---
+
+--instead of printing "bark" it prints "meow" 
+--the method has the same name with the parent class method will overwrite the inherited method 
 tim.talk() 
 
+--with the same concept above
+class cat(dog):
+    def __init__(self,name,age,color):
+        super().init__(name,age)
+        self.name="tech"
 
+tim.speak()
+--the output=> Hi I am tech and I am 5 years old.
+
+--------------------------------------------------------------------------------------------------------
+class vehicle():
+    def __init__(self,price,gas,color):
+        self.price = price
+        self.gas = gas
+        self.color =color
+        
+    def fillUpTank(self):
+        self.gas=100
+    
+    def emptyTank(self):
+        self.gas=0
+        
+    def gasLeft(self):
+        return self.gas
+        
+class car(vehicle):
+    def __init__(self,price,gas,color,speed):
+        super.__init(price,gas,color)
+        self.speed=speed
+     
+    def beep(self):
+        print("Beep Beep")
+        
+    
+class truck(vehicle):
+    def __init__(self,price,gas,color,tires):
+        super().__init__(price,gas,color,tires)
+        self.tires = tires
+    
+    def beep(self):
+        print("Honk Honk")
 
 
 
