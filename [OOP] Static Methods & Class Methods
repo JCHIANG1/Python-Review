@@ -101,22 +101,3 @@ class Employee:
 
 new_emp_1=Employee.from_string(emp_str_1)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
