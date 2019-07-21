@@ -1,3 +1,7 @@
+--regular class method: take the class instance (self) automatically in ()
+--class method: take the class (cls) automatically in ()
+--static method: take argument or none in ()
+
 class dog:
     
     #class variable
@@ -34,4 +38,85 @@ print(tom.num_dogs()) #this will work too
 #static method
 #this method is used for building import python module to organized functions
 dog.bark(5)
+
+---------------------------------------------------------------------------------------------------------
+class Employee:
+    
+    raise_amt=1.04
+    
+    def __init__(self,first,last,pay):
+        self.first=first
+        self.last=last
+        self.pay=pay
+        
+    def apply_raise(self):
+        self.pay=int(self.pay*self.raise_amt)
+        
+    @classmethod
+    def set_raise_amt(cls,amount):
+        cls.raise_amt=amount
+        
+#if we want to change the class variable raise_amt to 5% we can do
+Employee.set_raise_amt(1.05)
+
+#is actually the same as
+Employee.raise_amt =1.05
+
+emp_1 = Employee('Corey','Smith',500)
+print(Employee.raise_amt) #1.05
+print(emp_1.raise_amt) #1.05
+
+#we can also use instance with class method which will give us the same result but people rarely do so
+emp_1.set_raise_amt(1.05)
+print(Employee.raise_amt) #1.05
+print(emp_1.raise_amt) #1.05
+
+---------------------------------------------------------------------------------------------------------------
+#Example about the Alternative Constructor
+
+#if we have to preprocess the string before pass it into the Employee class
+emp_str_1 = 'John-Deo-70000'
+
+class Employee:
+    
+    raise_amt=1.04
+    
+    def __init__(self,first,last,pay):
+        self.first=first
+        self.last=last
+        self.pay=pay
+        
+    def apply_raise(self):
+        self.pay=int(self.pay*self.raise_amt)
+        
+    @classmethod
+    def set_raise_amt(cls,amount):
+        cls.raise_amt=amount
+    
+    #Alternative Constructor
+    @classmethod
+    def from_string(cls,emp_str):
+        first,last,pay=emp_str.split('-')
+        return cls(first,last,pay)
+
+new_emp_1=Employee.from_string(emp_str_1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
