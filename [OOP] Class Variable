@@ -1,0 +1,72 @@
+--class variable
+--class variable should be the same for all instance of class
+
+
+class Employee:
+
+    raise_amount = 1.04
+    
+    def__init__(self, first, last, pay):
+        self.first=first
+        self.last=last
+        self.pay=pay
+        self.email=first+'.'+last+'@company.com'
+        
+    def apply_raise(self):
+        self.pay = int(self.pay*self.raise_amount) #or we can also do Employee.raise_amount
+        
+
+emp_1= Employee('Amy','Smith',50000)
+
+# the output will be the same below
+print(emp_1.raise_amount)
+print(Employee.raise_amount)
+
+#when we try to access the attribute of an instance, it'll first check if the instance contains that attribute if not
+#it will exercute the class attribute/variable
+print(emp_1.raise_amount) #the emp_1 doesn't have the raise_amount attribute here so it is exercuting the class variable
+
+#we can doulble check the above statement by printing out the namespace of the object
+print(emp_1.__dict__) # {'first':'Amy','pay':50000,'last':'Smith','email':'Amy.Smith@company.com'} there is no raise_amount
+print(Employee.__dict__) # raise_amount is in the output
+
+--Example 1
+Employee.raise_amount = 1.05
+print(Employee.raise_amount) #1.05
+print(emp_1.raise_amount) #1.05
+
+--Example 2 when exercute the command below we create the attribute in the instance namespace
+emp_1.raise_amount = 1.05
+print(Employee.raise_amount) #1.04
+print(emp_1.raise_amount) #1.05
+print(emp_1.__dict__) # {'first':'Amy','pay':50000,'last':'Smith','email':'Amy.Smith@company.com','raise_amount':1.05}
+
+
+------------------------------------------------------------------------------------------------------------
+--keeping track of the number of employee
+
+class Employee:
+
+    num_of_emps=0
+    
+    def__init__(self, first, last, pay):
+        self.first=first
+        self.last=last
+        self.pay=pay
+        self.email=first+'.'+last+'@company.com'
+        
+        Employee.num_of_emps +=1
+        
+--Example 1)
+emp_1= Employee('Amy','Smith',50000)
+print(Employee.num_of_emps) #1
+
+--Example 2)
+print(Employee.num_of_emps) #0
+ 
+ 
+ 
+        
+        
+
+
