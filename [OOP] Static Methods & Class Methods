@@ -1,12 +1,16 @@
 class dog:
+    
+    #class variable
     dogs = []
     
     def __init__(self,name):
         self.name = name
+        
         #append the class object 
         self.dogs.append(self)
     
-    @classmethod
+    #decorator @ for visual representation when reviewing and organize the code
+    @classmethod 
     def num_dogs(cls):
         return len(cls.dogs)
         
@@ -16,5 +20,18 @@ class dog:
             print("Bark!")
             
 tim = dog("Tim")
-            
-            
+
+#for the class variable, we don't have to have a class instance to access it
+#we can see there is one object in the dogs list
+print(dog.dogs)
+
+print(tim.dogs) #this will also work too
+
+#the class method can be called by class instead of using the instance to call them
+print(dog.num_dogs())
+print(tom.num_dogs()) #this will work too
+
+#static method
+#this method is used for building import python module to organized functions
+dog.bark(5)
+
