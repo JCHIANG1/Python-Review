@@ -3,7 +3,7 @@
 2) Properties and Methods form a class entity, for example under HUMAN class the properties may be name, gender and occupation,
 and the Methods may be speak and talk
 
---what is an object?
+--what is an object/ instant variable? 
 object is the specific instance of class, for example the object of the HUMAN class may be Tom or Mary
 
 --what is the method?
@@ -29,11 +29,15 @@ class Human:
     
  #create an instance of class Human
  tom = Human("tom cruise","actor") #by doing Human() we initializing the first init method
+ #to exercute the method we need to use the ()
  tom.do_work()
+ Human.do_work(tom) #the same as the line above
+ 
  tom.speaks()
+ Human.speaks(tom)
  
  #we can access the attributes of the object
+ #if printing the attribute we don't need ()
  print(tom.name)
  print(tom.occupation)
  
-
