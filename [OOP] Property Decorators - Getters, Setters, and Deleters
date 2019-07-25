@@ -1,0 +1,80 @@
+class Employee:
+    
+    def __init__(self,first,last):
+        self.first=first
+        self.last=last
+        self.email=first+'.'+last+"@email.com"
+        
+    def fullname(self):
+        return "{} {}".format(self.first,self.last)
+        
+emp_1=Employee("John","Smith")
+emp_1.first = "Jim"
+
+print(emp_1.first) #Jim
+print(emp_1,email) #John.Smith@email.com
+print(emp_1.fullname()) #Jim Smith
+
+------------------------------------------------------------------------------------------------------------
+#to update email attribute when we update the first name
+#we can use the property decorators to access method as attribute
+
+class Employee:
+    
+    def __init__(self,first,last):
+        self.first=first
+        self.last=last
+        
+    @property
+    def email(self):
+        return "{}.{}@email.com".format(self.first,self.last)
+        
+    def fullname(self):
+        return "{} {}".format(self.first,self.last)
+        
+emp_1=Employee("John","Smith")
+emp_1.first = "Jim"
+
+print(emp_1.first) #Jim
+print(emp_1,email) #Jim.Smith@email.com
+print(emp_1.fullname()) #Jim Smith
+        
+#without the property decorator people who use the class might encounter their code broken
+#because they have to change the code to print(emp_1,email()) to get the updated version
+
+----------------------------------------------------------------------------------------------------------------------
+#when we update the employee's full name and want to atomatically update the first, last and email we can use @setter
+
+class Employee:
+    
+    def __init__(self,first,last):
+        self.first=first
+        self.last=last
+        
+    @property
+    def email(self):
+        return "{}.{}@email.com".format(self.first,self.last)
+        
+    def fullname(self):
+        return "{} {}".format(self.first,self.last)
+        
+    @fullname.setter
+    def fullname(self,name):
+        first,last=name.split(' ')
+        self.first=first
+        self.last=last
+        
+    @fullname.deleter
+    def fullname(self):
+        print('Delete Name!')
+        self.first=None
+        self.last=None
+        
+emp_1=Employee("John","Smith")
+emp_1.fullname = "Rae Chiang"
+
+print(emp_1.first) #Rae
+print(emp_1,email) #Rae.Chiang@email.com
+print(emp_1.fullname()) #Rae Chiang
+
+del emp_1.fullname #Delete Name
