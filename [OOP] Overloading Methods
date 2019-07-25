@@ -55,3 +55,56 @@ print(p4,p5)
 # this operation will return true or false
 print(p1==p2)
 print(p3>=p1)
+
+-------------------------------------------------------------------------------------------------------------------
+
+#__repr__ dunder method
+#an unambiguous representation of an object shoud be used in debuging and is meant to be seen by other developers
+
+#__str__ dunder method
+#a readable representation of an object meant to be used to display to end user
+
+# if we only set up the __repr__ then when calling str on object it will display the repr
+
+class Employee:
+
+    def __init__(self,first,last,pay):
+        self.first=first
+        self.last=last
+        self.pay=pay
+        
+    def fullname(self):
+        return "{} {}".format(self.first,self.last)
+    
+    #role of thumb, try to create this method with the output that can be copied so we can recreate the object
+    def __repr__(self):
+        return "Employee({},{},{})".format(self.first,self.last,self.pay)
+        
+    def __str__(self):
+        return "{} - {}".format(self.fullname(),self.pay)
+        
+    def __len__(self):
+        return len(self.fullname())
+        
+    #if we add two employees together and return their pay sum as output
+    def __add__(self,other):
+        return self.pay + other.pay
+
+
+emp_1 = Employee('Amy','Smith',50000)
+emp_1 = Employee('Rae','Chiang',50000)
+
+print(emp_1)
+#before coding the __repr__ method and __str__ method the output will probably look like this <__main__.Employee object at xxxx>
+#after creating the __str__ method when exercute the syntex above the output will be Amy - 50000
+
+#these 2 means the same thing
+print(emp_1.__repr__()) #the output=>Employee('Amy','Smith',50000)
+print(repr(emp_1))
+
+print(len(emp_1)) # 8
+
+print(add(emp_1,emp_2)) # 100000
+print(emp_1 + emp_2)
+
+
